@@ -1,45 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>copyright test</title>
-      <link href="/2019/06/18/copyright-test/"/>
-      <url>/2019/06/18/copyright-test/</url>
-      
-        <content type="html"><![CDATA[<p>这是一个版权声明的测试</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试，日志 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo 主题优化日志</title>
-      <link href="/2019/06/12/first-blog/"/>
-      <url>/2019/06/12/first-blog/</url>
-      
-        <content type="html"><![CDATA[<p>这篇就是个测试，闹着玩的，哈哈<br>其实就给自己一个电子日记本<br>看看以后能不能建两个目录，一个记录日记<br>一个记录技术自己的技术成长过程<br>我自己真的很懒，希望自己对博客能和健身一样坚持下去<br>其实自己现在对健身也不是很上心<br>以后再说吧，先看看这篇能不能上传上去</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>测试失败，明天整上传代码块的正确姿势<br>6-18 已完成 代码块测试  支持本地搜索 未完成–未找到下xml文件<br>6-19 已完成 本地搜索 字数统计未完成 –字数不显示</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[copyright test]]></title>
+    <url>%2F2019%2F06%2F18%2Fcopyright-test%2F</url>
+    <content type="text"><![CDATA[这是一个版权声明的测试]]></content>
+      <tags>
+        <tag>测试，日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo 主题优化日志]]></title>
+    <url>%2F2019%2F06%2F12%2Ffirst-blog%2F</url>
+    <content type="text"><![CDATA[这篇就是个测试，闹着玩的，哈哈其实就给自己一个电子日记本看看以后能不能建两个目录，一个记录日记一个记录技术自己的技术成长过程我自己真的很懒，希望自己对博客能和健身一样坚持下去其实自己现在对健身也不是很上心以后再说吧，先看看这篇能不能上传上去 1234int main&#123; printf("hello world"); return 0;&#125; 测试失败，明天整上传代码块的正确姿势6-18 已完成 代码块测试 支持本地搜索 未完成–未找到下xml文件6-19 已完成 本地搜索 字数统计未完成 –字数不显示6-22 已完成 字数统计 大工程 评论系统 –leancloud developer 模式不开放 准备部署服务器 阿里云 背景 拉长以后总是失真且不好看 –放弃]]></content>
+      <tags>
+        <tag>日记</tag>
+      </tags>
+  </entry>
 </search>
