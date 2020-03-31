@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[restarto]]></title>
+    <title><![CDATA[我就像个胡适一样]]></title>
     <url>%2F2020%2F04%2F01%2Frestarto%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前几天写data.frame的时候分组遇到一个问题，先贴代码 1data_df.loc[(data_df["v3_scope"]=="UNCHANGED")&amp;(data_df["v3_privilegesRequired"]=="LOW"),"v3_privilegesRequired"]="LOW1" python panda 定位条件必须用loc,以及不宜使用太多[][]不然会报错容易错误理解]]></content>
+      <tags>
+        <tag>ass</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[就随便写一点]]></title>
