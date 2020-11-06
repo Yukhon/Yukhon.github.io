@@ -370,6 +370,302 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/05/NLP-revision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukhon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/shoe.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukhon's tech blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/11/05/NLP-revision/" class="post-title-link" itemprop="url">NLP revision(1)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-05 15:35:44" itemprop="dateCreated datePublished" datetime="2020-11-05T15:35:44+11:00">2020-11-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-11-06 16:40:26" itemprop="dateModified" datetime="2020-11-06T16:40:26+11:00">2020-11-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/11/05/NLP-revision/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/NLP-revision/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>At the end of semester, I would like to pick some keys regarding the course ‘document analysis, especially for the part of NLP. For easily viewing by myself, I would mix some mandarin for conceptional explanation.</p>
+<p><strong>Boolean Retrieval (Originally presented as Term-document incidence matrix)</strong>: 0-1 matrix, row represents different document, column represents different terms.</p>
+<p>But with Bigger collections, 0-1 matrix would be extremely sparse, so we introduce inverted matrix. </p>
+<p><strong>inverted matrix</strong>: Dictionary, the key refers to each term, to simplify, the corresponding values would be a list containing document ids including the term.(We call the list as posting)</p>
+<p><strong>INDEXER</strong>: Construct inverted index from raw text</p>
+<p>To prepare for the process of indexer, we need to preprocess the raw data.</p>
+<p><strong>Initial Stages of Text Processing</strong></p>
+<ul>
+<li>Tokenization<ul>
+<li>Cut character sequence into word tokens</li>
+<li>Deal with “John’s”, a state-of-the-art solution</li>
+<li>while space tokenizer is always not enough</li>
+<li>Regex is recommended</li>
+</ul>
+</li>
+<li>Stop words(removal)<ul>
+<li>We may omit very common words (or not)</li>
+<li>E.g. the, a, to, </li>
+</ul>
+</li>
+<li>Normalization<ul>
+<li>Map text and query term to same form</li>
+<li>You want U.S.A. and USA to match</li>
+</ul>
+</li>
+<li>Stemming and lemmatization<ul>
+<li>stemming: 把各种词的三单，时态，复数 转换为单词的原型或词根模式</li>
+<li>lemmatization: 将同义词合并在一起  </li>
+</ul>
+</li>
+</ul>
+<p>Ranked Retrieval: Boolean retrieval cares little about the order of the text. We need to consider it in NLP implementation.</p>
+<p>Or we may say Boolean Retrieval is establish on Bag-Of-Words(BOW) Assumption.<br>或者说 由于Boolean Retrieval 本身必须是所有的关键词都存在于文件中，它本身没有一个缓冲机制<br>To improve this a little bit, we mark the inverted matrix with the location the term (token) is retrieved from. (Title, Author, Published date, Body)</p>
+<p>However, the problem cannot be eradicated within the Boolean Retrieval, therefore, the ranked retrieval(<strong>RR</strong>) is introduced.</p>
+<p>Ideas of RR: We need to find some score function. When the query comes into the system, the documents would be sorted by this score function, representing the closeness between the query and documents.</p>
+<p><strong>Variations 1</strong>: Scoring with Weighted Fields, assign location with weights and sum it up.</p>
+<p><strong>Term frequency</strong>: Sum up the number of occurrence of all the keys in a query. </p>
+<p>CONs of TF: what about each term has different importance? How to mitigate the effect of terms that occur too often in the collection?</p>
+<p>也就是说有可能 某个key可能在每个文件都出现过，那么它的优先级就不是那么高，就跟之前的stopwords 一样</p>
+<p><strong>Measure the importance: Document Frequency(DF)</strong>: the number of documents in the collection that contains some desired term t</p>
+<p>To measure the importance intuitively, we introduce inverse document frequency(IDF), where<br>$$<br>IDF_t = log \frac{N}{DF_t}<br>$$</p>
+<p>Then we can combine the two methods together, becoming various <strong>TF-IDF measurement</strong></p>
+<p>$$<br>Score_{tf-idf}(d, q) = \sum_{i=1}^{m} tf-idf_{ti,d}<br>$$</p>
+<p>CONs:<br>Score linearly increases with respect to frequency of term, which is inconsistent with the actual conditions. After a certain frequency, the absolute frequency isn’t important.</p>
+<p>Solution: We introduce the weighted term frequency(wf), see <a href="https://wattlecourses.anu.edu.au/pluginfile.php/2424225/mod_resource/content/0/Lec2_Ranked_2020_-2.pdf" target="_blank" rel="noopener">slides 27</a> (not the point of this revision)</p>
+<p>Drawbacks： Both scoring prefers longer documents</p>
+<p>Solution: introduce Maximum tf normalization, where</p>
+<p>$$<br>ntf_{t, d} = \alpha + (1 - \alpha) \frac{tf_{t,d}}{tf_{max}(d)}<br>$$</p>
+<p>Every variants is not perfect though.</p>
+<p>Seeing the data structure of vector in IR system. We could introduce vector model (more precisely, similarity model), it could be another source of scoring.</p>
+<p>OK, that’s basically all the content about IR system, then let’s talk about the evaluation.</p>
+<p>Especially, we focus most on the efficiency </p>
+<p>For <strong>Boolean Retrieval</strong>, we split the collections into: Retrieved, not retrieved</p>
+<p>也就是说当文件被 Boolean 处理时 系统只会提取 docs 都contain 所有keys 里面的和 剩下的</p>
+<p>Normally, we introduce Contingency Table </p>
+<p>Row index represents ground truth</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Relevant</th>
+<th>Not Relevant</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Retrieved</td>
+<td>true positive(tp)</td>
+<td>false positive(fp)</td>
+</tr>
+<tr>
+<td>Not Retrieved</td>
+<td>false negative(fn)</td>
+<td>true negative(tn)</td>
+</tr>
+</tbody></table>
+<p>我的理解: 第一个true or false 是判断实际情况是否与ground truth 相符，理想情况下，好的IR system 需要将所有的groud truth docs 都给提取出来，那么与理想情况相反的就是false，一致就是true。 后面的 的positive 和negative 则是 根据retrieve or not 体现的</p>
+<p>Some measures relevant: </p>
+<p>$$<br>Precision = \frac{tp}{tp + fp}</p>
+<p>Recall = \frac{tp}{tp + fn}</p>
+<p>Accuracy = \frac{tp + tn}{tp + tn + fn + fp}<br>$$</p>
+<p>Accuracy is useless in the field of evaluation 因为我们在evaluate 的时候只foucs on tp</p>
+<p>then F1-measure,</p>
+<p>$$ </p>
+<p>F_1 = \frac{Precision * Recall}{Precision + Recall} </p>
+<p>$$</p>
+<p>For <strong>ranked retrieval</strong> sets :</p>
+<ul>
+<li>Unlike the previous example, the system<br>retrieved all documents in our collection.</li>
+<li>Precision &amp; Recall cannot be directly<br>applied in this case.</li>
+<li>Need a metric to measure the performance<br>of ranked list!</li>
+</ul>
+<p>就是说因为RR会retrieve所有的docs， 所以我们需要在retrieve n个 文件时统计各自的precision and recall, 这就是 Precision-Recall Curve</p>
+<p>The Curve ends when recall reaches 1;</p>
+<p>Interpolated Average Precision : 就是将所有的precision-recall点 放在图中 (无retrieved 文件顺序) 良好的system 会呈直线分布</p>
+<p>Mean Reciprocal Rank(MRR): 所有query 在此IR system 第一个groud truth 的倒数的平均数</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/restarto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1189,7 +1485,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1216,7 +1512,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1305,7 +1603,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">6k</span>
   
 
   
@@ -1316,7 +1614,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
   
 </div>
 
@@ -1791,6 +2089,65 @@
   
 
   
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
 
   
 
