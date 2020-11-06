@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-11-06 16:40:26" itemprop="dateModified" datetime="2020-11-06T16:40:26+11:00">2020-11-06</time>
+                <time title="修改时间：2020-11-06 17:35:32" itemprop="dateModified" datetime="2020-11-06T17:35:32+11:00">2020-11-06</time>
               
             
           </span>
@@ -543,7 +543,9 @@
 </li>
 </ul>
 <p>Ranked Retrieval: Boolean retrieval cares little about the order of the text. We need to consider it in NLP implementation.</p>
-<p>Or we may say Boolean Retrieval is establish on Bag-Of-Words(BOW) Assumption.<br>或者说 由于Boolean Retrieval 本身必须是所有的关键词都存在于文件中，它本身没有一个缓冲机制<br>To improve this a little bit, we mark the inverted matrix with the location the term (token) is retrieved from. (Title, Author, Published date, Body)</p>
+<p>Or we may say Boolean Retrieval is establish on Bag-Of-Words(BOW) Assumption.</p>
+<p>或者说 由于Boolean Retrieval 本身必须是所有的关键词都存在于文件中，它本身没有一个缓冲机制</p>
+<p>To improve this a little bit, we mark the inverted matrix with the location the term (token) is retrieved from. (Title, Author, Published date, Body)</p>
 <p>However, the problem cannot be eradicated within the Boolean Retrieval, therefore, the ranked retrieval(<strong>RR</strong>) is introduced.</p>
 <p>Ideas of RR: We need to find some score function. When the query comes into the system, the documents would be sorted by this score function, representing the closeness between the query and documents.</p>
 <p><strong>Variations 1</strong>: Scoring with Weighted Fields, assign location with weights and sum it up.</p>
@@ -588,14 +590,10 @@
 </tbody></table>
 <p>我的理解: 第一个true or false 是判断实际情况是否与ground truth 相符，理想情况下，好的IR system 需要将所有的groud truth docs 都给提取出来，那么与理想情况相反的就是false，一致就是true。 后面的 的positive 和negative 则是 根据retrieve or not 体现的</p>
 <p>Some measures relevant: </p>
-<p>$$<br>Precision = \frac{tp}{tp + fp}</p>
-<p>Recall = \frac{tp}{tp + fn}</p>
-<p>Accuracy = \frac{tp + tn}{tp + tn + fn + fp}<br>$$</p>
+<p>$$<br>Precision = \frac{tp}{tp + fp}\<br>Recall = \frac{tp}{tp + fn}\<br>Accuracy = \frac{tp + tn}{tp + tn + fn + fp}<br>$$</p>
 <p>Accuracy is useless in the field of evaluation 因为我们在evaluate 的时候只foucs on tp</p>
 <p>then F1-measure,</p>
-<p>$$ </p>
-<p>F_1 = \frac{Precision * Recall}{Precision + Recall} </p>
-<p>$$</p>
+<p>$$<br>F_1 = \frac{Precision * Recall}{Precision + Recall}<br>$$</p>
 <p>For <strong>ranked retrieval</strong> sets :</p>
 <ul>
 <li>Unlike the previous example, the system<br>retrieved all documents in our collection.</li>
