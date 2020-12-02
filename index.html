@@ -370,6 +370,431 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/02/Hamiltonian Neural Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukhon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/shoe.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukhon's tech blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/12/02/Hamiltonian Neural Networks/" class="post-title-link" itemprop="url">HNN summary</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-02 14:13:40" itemprop="dateCreated datePublished" datetime="2020-12-02T14:13:40+11:00">2020-12-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-03 02:06:05" itemprop="dateModified" datetime="2020-12-03T02:06:05+11:00">2020-12-03</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/12/02/Hamiltonian Neural Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/12/02/Hamiltonian Neural Networks/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Background-knowledge"><a href="#Background-knowledge" class="headerlink" title="Background knowledge"></a>Background knowledge</h1><p>Forgive my poor physics knowledge, I have to summarize something about Hamiltonian mechanics.</p>
+<p>We can represent an object state represented by the combination of its momentum space and position space coordinates. </p>
+<p>With time stamp, we can build a model to describe trajectory of object f(p, q, t)</p>
+<p>Hamiltonian mechanics is kind of representation of the state, represented as<br>$$<br>\frac{\partial q}{\partial t} = \frac{\partial \mathcal{H}}{p}(a)\<br>\frac{\partial p}{\partial t} = -\frac{\partial \mathcal{H}}{q}(b)<br>$$</p>
+<p>where $\mathcal{H}$ is actually an representation of object energy(which is constant). That’s an efficient way for us to derive S, which is (a, b), then use S predict the next state:<br>$$<br>s_1 = s_0 + \int_{t_0}^{t_1} S_{\mathcal{H}} dt<br>$$</p>
+<h1 id="why-to-introduce-Hamiltonian-mechanics"><a href="#why-to-introduce-Hamiltonian-mechanics" class="headerlink" title="why to introduce Hamiltonian mechanics"></a>why to introduce Hamiltonian mechanics</h1><p>Because previous methods are not based on conservation law, so error accumulates (I think it’s something like gradient explosion for RNN). Instead, Hamilton addresses the problem perfectly as it’s based on the conservation laws. </p>
+<h1 id="features"><a href="#features" class="headerlink" title="features"></a>features</h1><p>Before the neural network starts, we know some physical laws and use it to adjust the architecture of neural networks, including loss function, etc.</p>
+<h1 id="some-thoughts-about-it"><a href="#some-thoughts-about-it" class="headerlink" title="some thoughts about it"></a>some thoughts about it</h1><ul>
+<li>With the condition of vacuum(frictionless), HNN is perfect for planet orbit prediction(maybe some restriction of pixel, there are many noise data, it’s another problem needed to tackle) </li>
+<li>Since HNN could handle multiple body system, then it would be easier when tackling the relation between stars and its satellites. the session in this paper ‘learning a Hamiltonian form pixels’ would be an good example. </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/10/NLP-revision(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukhon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/shoe.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukhon's tech blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/11/10/NLP-revision(2)/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-10 17:49:27" itemprop="dateCreated datePublished" datetime="2020-11-10T17:49:27+11:00">2020-11-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-02 14:20:21" itemprop="dateModified" datetime="2020-12-02T14:20:21+11:00">2020-12-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/11/10/NLP-revision(2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/10/NLP-revision(2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">909</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h1><h2 id="one-hot-vector"><a href="#one-hot-vector" class="headerlink" title="one hot vector"></a>one hot vector</h2><p>represent the word in a 0-1 vector, the length would be the the length of dictionary.<br>Obviously, it’s too space consuming.</p>
+<h2 id="Context-based-Word-Representation"><a href="#Context-based-Word-Representation" class="headerlink" title="Context-based Word Representation"></a>Context-based Word Representation</h2><p>Word Co-occurrence Matrix: refer to slides <a href="https://wattlecourses.anu.edu.au/pluginfile.php/2424243/mod_resource/content/1/ML2-Representation.pdf" target="_blank" rel="noopener">P12</a></p>
+<p>为什么会提出这种matrix呢， 我理解的是一旦这个词后面紧跟 的词 相似的话那就说明 这两个词至少可以用法相同</p>
+<p>PMI(Pairwise Mutual Information): </p>
+<p>$$<br>PMI_{i,j} = log \frac{P(w_{i,j})}{P(w_i)P(w_j)}<br>$$<br>就是求 联合概率 用log scale.</p>
+<p>After that, we can calculate similarity through cos(i, j)</p>
+<p>However, there still exists the matrix that has high dimensionality and sparsity problem, we use SVD to decrease dimentions. </p>
+<h2 id="Word-vector-gt-Word2vec"><a href="#Word-vector-gt-Word2vec" class="headerlink" title="Word vector == &gt; Word2vec"></a>Word vector == &gt; Word2vec</h2><p>distributed representations.</p>
+<p>将 word 转化为向量，在有限的window里面预测word。</p>
+<h2 id="Supervised-learning"><a href="#Supervised-learning" class="headerlink" title="Supervised learning"></a>Supervised learning</h2><h3 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h3><p>Nothing needs to pick up… I think</p>
+<h3 id="deep-neural-network"><a href="#deep-neural-network" class="headerlink" title="deep neural network"></a>deep neural network</h3><p>activate function: to change every ‘neural’ from linear regression to non-linear one.</p>
+<p>Normal activate function: Rectified Linear Unit(Relu) == max(0,x)</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/05/NLP-revision/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1508,7 +1933,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1537,7 +1962,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1626,7 +2053,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">10k</span>
   
 
   
@@ -1637,7 +2064,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7 分钟</span>
+    <span title="站点阅读时长">9 分钟</span>
   
 </div>
 
@@ -2116,6 +2543,10 @@
 
   
   
+    
+      
+    
+      
     
       
     
