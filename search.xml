@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[HNN summary]]></title>
-    <url>%2F2020%2F12%2F02%2FHamiltonian%20Neural%20Networks%2F</url>
-    <content type="text"><![CDATA[Background knowledgeForgive my poor physics knowledge, I have to summarize something about Hamiltonian mechanics. We can represent an object state represented by the combination of its momentum space and position space coordinates. With time stamp, we can build a model to describe trajectory of object f(p, q, t) Hamiltonian mechanics is kind of representation of the state, represented as$$\frac{\partial q}{\partial t} = \frac{\partial \mathcal{H}}{p}(a)\\frac{\partial p}{\partial t} = -\frac{\partial \mathcal{H}}{q}(b)$$ where $\mathcal{H}$ is actually an representation of object energy(which is constant). That’s an efficient way for us to derive S, which is (a, b), then use S predict the next state:$$s_1 = s_0 + \int_{t_0}^{t_1} S_{\mathcal{H}} dt$$ why to introduce Hamiltonian mechanicsBecause previous methods are not based on conservation law, so error accumulates (I think it’s something like gradient explosion for RNN). Instead, Hamilton addresses the problem perfectly as it’s based on the conservation laws. featuresBefore the neural network starts, we know some physical laws and use it to adjust the architecture of neural networks, including loss function, etc. some thoughts about it With the condition of vacuum(frictionless), HNN is perfect for planet orbit prediction(maybe some restriction of pixel, there are many noise data, it’s another problem needed to tackle) Since HNN could handle multiple body system, then it would be easier when tackling the relation between stars and its satellites. the session in this paper ‘learning a Hamiltonian form pixels’ would be an good example.]]></content>
+    <title><![CDATA[Linux environment setting up]]></title>
+    <url>%2F2020%2F12%2F09%2FLinux%20setting%20up%2F</url>
+    <content type="text"><![CDATA[做GNN, 可能需要jaxlib的包, 找了很久都没有 支持windows的办法, 于是就在虚拟机弄了个linux的开发环境。 (虽然jaxlib说没检测到我的GPU最后也没用上,伤心) 附几个链接给自己后来需要的话一个参考 Virtual machine setting up:B站 AV号: BV1t54y1R7F3 脚本没用上,以后可以看看他的环境怎么样miniconda:原本想装 anaconda, 出错查了查是存储给小了, 又懒得重设了装了miniconda. 参考 https://zhuanlan.zhihu.com/p/69799707 Linux jupyter notebook的安装 用vscode 远程操控文件 https://blog.csdn.net/codingpy/article/details/105803890这里 有一个bug, 可能是firefox浏览缓存或者 未设置cookie的bug, 目前是重启，到时候遇到了再说吧 还有虚拟机隐藏问题 TODO: 将虚拟机图形界面隐藏]]></content>
       <tags>
-        <tag>potential projects for summer research;</tag>
+        <tag>setting up</tag>
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>%2F2020%2F11%2F10%2FNLP-revision(2)%2F</url>
+    <title><![CDATA[Parameter configuration]]></title>
+    <url>%2F2020%2F12%2F07%2FParameter%20configuration%2F</url>
+    <content type="text"><![CDATA[Still some explanation would be used in mandarin for understanding: background abbreviation: CFHT:Canada–France–Hawaii Telescope MAGACAM(MP): CFHT的外挂仪器, 有好多个感光照相机组成 MKAM: Mauna Kea Atmospheric Monitor, another optics system.( TODO: the relationship between MKAM and MP?) MKAM DIMM seeing: TODO: Not configured yet, I guess each system has its own IQ evaluation methods, one is MPIQ, the other is MKAM DIMM Seeing. the history of CFHT(dataset)graph LR; MP-->MP-MKAM; MP-MKAM-->MP-MKAM-Vents; graph TD; A-->B; A-->C; B-->D; C-->D; parametersMINUTE_EPOCH: TODO: No idea about it. Any thoughts? most of the interval between adjacent cells 120, sometimes 60OBSID: Record IDDOMEAZ: Dome Azimuth, 穹顶方位角DOMELOUV: Dome louvers, 穹顶百叶窗, always closed since setting recording.DOMESHUT: Dome closed or openEXPMEAS: Measurement expressions?TODO: I am not sure.FILTER: makes contribution to IQGUIRADEC: no idea, always FK5 (The Fifth Fundamental Catalogue)HSTTIME: time in HawaiiMIRRCOV: Mirror covered or not? TODO: NOT sureMPIQ: MAGACAM image qualityOBJECT:PRESSURE:RELHUMID: humiditySKYBG: Sky background TODO:SPOZPMEN= SkyProbe (orig) mean absorption, magnitudeSPOZPMED= SkyProbe (orig) median absorption, magnitudeSPOZPMOD= SkyProbe (orig) mode absorption, magnitudeSPOZPSTD= SkyProbe (orig) absorption deviation, magnitude TEA2INCH:temperature delta permutationsTEA2INEB:temperature delta permutationsTEA6FOOT:temperature delta permutationsTEALOWWS:temperature delta permutationsTEAMIRCI:~ TEAMIRCO:~ TEANRLSB:~ TEAPMCLW:~ TEAPMSPN:~ TEAPMSPS:~ TEATOPOP:~ TEATOPWS:~ TEATRNGE:~ TEATRNGW:~ TEAWTHRT:~ TODO: understanding for temperature delta permutationsTELALT:Telescope altitudeTELAZ: Telescope AzimuthTEMPERAT:temperature TESCONRM:~ TESHRSET:~ TESPIERN:~ TESPIERS:~ TESPMIRE:~ TESPMIRS:~ TESPMIRW:~ TESTSPHE:~ TESTTREM:~ TESTTRNM:~ TESTTRSE:~ TESTTRSH:~ TESTTRSL:~ TESTTRWM:~ Vent R1-R6,L1-R6, 12 overall: open or closed with 3 angles TODO: what does ‘w’ represent forWDSEEMED: Dome DIMM median seeing, arc secondsWDSEEMEN: Dome DIMM mean seeing, arc secondsWDSEEMOD: Dome DIMM mode seeing, arc secondsWDSEESTD: Dome DIMM seeing deviation, arc seconds WINDDIR: wind directionWINDSCR: wind screenWINDSPED: wind speed WMSEEMED:WMSEEMEN:WMSEEMOD:WMSEESTD: domeWallTemperatureEastdomeWallTemperatureNorthdomeWallTemperatureSouthdomeWallTemperatureWest catwalkTemperatureEast: catwalk 天桥catwalkTemperatureNorthcatwalkTemperatureSouthcatwalkTemperatureWest TODO: what does that mean?domeTopSkinTemperature1Average1Minute:domeTopSkinTemperature2Average1MinutedomeTopSkinTemperature3Average1MinutedomeTopSkinTemperature4Average1Minute preprocessing data results1 completely empty: OSBTYPE ‘SONICAN’, ‘TIMESTAMP’, ‘massdimm_seeing’, ‘massdimm_target’, ‘massdimm_airmass’, ‘massdimm_flux1’, ‘massdimm_flux2’, ‘massdimm_background’, ‘massdimm_scint1’, ‘massdimm_scint2’, ‘massdimm_strehl1’, ‘massdimm_strehl2’, ‘massdimm_alt’, ‘massdimm_az’, ‘mass_seeing’, ‘mass_profile_seeing’, ‘mass_profile_1_value’, ‘mass_profile_2_value’, ‘mass_profile_3_value’, ‘mass_profile_4_value’, ‘mass_profile_5_value’, ‘mass_profile_6_value’, ]]]></content>
+      <tags>
+        <tag>summer research</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HNN summary]]></title>
+    <url>%2F2020%2F12%2F01%2FHamiltonian%20Neural%20Networks%2F</url>
+    <content type="text"><![CDATA[Background knowledgeForgive my poor physics knowledge, I have to summarize something about Hamiltonian mechanics. We can represent an object state represented by the combination of its momentum space and position space coordinates. With time stamp, we can build a model to describe trajectory of object f(p, q, t) Hamiltonian mechanics is kind of representation of the state, represented as$$\frac{\partial q}{\partial t} = \frac{\partial \mathcal{H}}{p}(a)\\frac{\partial p}{\partial t} = -\frac{\partial \mathcal{H}}{q}(b)$$ where $\mathcal{H}$ is actually an representation of object energy(which is constant). That’s an efficient way for us to derive S, which is (a, b), then use S predict the next state:$$s_1 = s_0 + \int_{t_0}^{t_1} S_{\mathcal{H}} dt$$ why to introduce Hamiltonian mechanicsBecause previous methods are not based on conservation law, so error accumulates (I think it’s something like gradient explosion for RNN). Instead, Hamilton addresses the problem perfectly as it’s based on the conservation laws. featuresBefore the neural network starts, we know some physical laws and use it to adjust the architecture of neural networks, including loss function, etc. furthersome thoughts about it With the condition of vacuum(frictionless), HNN is perfect for planet orbit prediction(maybe some restriction of pixel, there are many noise data, it’s another problem needed to tackle) Since HNN could handle multiple body system, then it would be easier when tackling the relation between stars and its satellites. the session in this paper ‘learning a Hamiltonian form pixels’ would be an good example.]]></content>
+      <tags>
+        <tag>summer research</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NLP revision(2)]]></title>
+    <url>%2F2020%2F11%2F05%2FNLP-revision(2)%2F</url>
     <content type="text"><![CDATA[Representationone hot vectorrepresent the word in a 0-1 vector, the length would be the the length of dictionary.Obviously, it’s too space consuming. Context-based Word RepresentationWord Co-occurrence Matrix: refer to slides P12 为什么会提出这种matrix呢， 我理解的是一旦这个词后面紧跟 的词 相似的话那就说明 这两个词至少可以用法相同 PMI(Pairwise Mutual Information): $$PMI_{i,j} = log \frac{P(w_{i,j})}{P(w_i)P(w_j)}$$就是求 联合概率 用log scale. After that, we can calculate similarity through cos(i, j) However, there still exists the matrix that has high dimensionality and sparsity problem, we use SVD to decrease dimentions. Word vector == &gt; Word2vecdistributed representations. 将 word 转化为向量，在有限的window里面预测word。 Supervised learningLinear RegressionNothing needs to pick up… I think deep neural networkactivate function: to change every ‘neural’ from linear regression to non-linear one. Normal activate function: Rectified Linear Unit(Relu) == max(0,x)]]></content>
+      <tags>
+        <tag>course</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[NLP revision(1)]]></title>
@@ -30,14 +49,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[就随便写一点]]></title>
-    <url>%2F2019%2F07%2F06%2F%E9%9A%8F%E4%BE%BF%E5%86%99%2F</url>
-    <content type="text"><![CDATA[大二结束，其实回顾在中国的两年，真不是很满意，无论在数据结构上，还是项目上，还是学习上，都不是自己最好的状态，其实在期末考的时候的状态，虽然没有健身，饮食也不是很规律，但从自己从下午一直坐到晚上的状态真的很充实，纵使自己可能最后考试成绩可能不是很好，但真的努力过，也就是说，如果，我将这个状态带到澳洲的话，就可能真是我的大学的一个转折点specialisation 上我不知道将来会怎么选择，但如果在ai上大家都是一个起点上的话，真的是一个机会，但，ai真是一个趋势吗？真的是吗？而且底层代码我也想试一下，真的能赚钱。。。说是自己不爱编程，但我还是觉得编程是每一个没有背景，没有经济实力的人最好的赚钱方式，无论是作为跳板，还是一生谋生的方式，如果真想编程，你需要大量的学习，不断地学习（苦笑），在没有其他的追求的情况下，保持一个学习的习惯真的是编程的意义所在。说回专业选择，哎再说吧，谁知道未来几十天会发生什么呢，如果全都中国人报的话，我也可以学习看看。注意一下自己的绩点，估计又要掉到80了，这可是对申研很不利啊，出分后得好好规划一下了今天就说这么多]]></content>
-      <tags>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[copyright test]]></title>
     <url>%2F2019%2F06%2F18%2Fcopyright-test%2F</url>
     <content type="text"><![CDATA[这是一个版权声明的测试]]></content>
@@ -46,11 +57,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo 主题优化日志]]></title>
-    <url>%2F2019%2F06%2F12%2Ffirst-blog%2F</url>
-    <content type="text"><![CDATA[这篇就是个测试，闹着玩的，哈哈其实就给自己一个电子日记本看看以后能不能建两个目录，一个记录日记一个记录技术自己的技术成长过程我自己真的很懒，希望自己对博客能和健身一样坚持下去其实自己现在对健身也不是很上心以后再说吧，先看看这篇能不能上传上去 1234int main&#123; printf("hello world"); return 0;&#125; 测试失败，明天整上传代码块的正确姿势6-18 已完成 代码块测试 支持本地搜索 未完成–未找到下xml文件6-19 已完成 本地搜索 字数统计未完成 –字数不显示6-22 已完成 字数统计 大工程 评论系统 –leancloud developer 模式不开放 准备部署服务器 阿里云 背景 拉长以后总是失真且不好看 –放弃 7-11 评论系统部署测试完成，hexo 项目基本完毕，下面为阿里云，域名购买和部署]]></content>
+    <title><![CDATA[Hexo plugin setting up]]></title>
+    <url>%2F2017%2F06%2F23%2FHexo%20setting%20up%2F</url>
+    <content type="text"><![CDATA[这边就直接记录 hexo各种插件的安装和功能拓展吧 hexo 支持graph作图]]></content>
       <tags>
-        <tag>日记</tag>
+        <tag>setting up</tag>
       </tags>
   </entry>
 </search>
